@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PegAndStop extends CommandGroup {
+public class CenterStation extends CommandGroup {
 
-    public PegAndStop() {
+    public CenterStation() {
     	addSequential(new AutoMoveToDistance(0.6,78.0));
     }
     	
