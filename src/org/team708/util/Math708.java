@@ -132,14 +132,20 @@ public class Math708 {
     
     public static double getSignClippedPercentError(double currentValue, double goalValue, double minimumValue, double maximumValue) {
     	double sign = Math.signum(getPercentError(currentValue, goalValue));
-    	if (sign < 0) {
-    		return makeWithin(getPercentError(currentValue, goalValue), minimumValue * sign, maximumValue * sign);
-    	}
-    	else if (sign > 0) {
-    		return makeWithin(getPercentError(currentValue, goalValue), minimumValue * sign, maximumValue * sign);
-    	}
-    	else {
-    		return 0;
+//    	if (sign < 0) {
+//    		return makeWithin(getPercentError(currentValue, goalValue), minimumValue * sign, maximumValue * sign);
+//    	}
+//    	else if (sign > 0) {
+//    		return makeWithin(getPercentError(currentValue, goalValue), minimumValue * sign, maximumValue * sign);
+//    	}
+//    	else {
+//    		return 0;
+//    	}
+    	
+    	if (sign != 0.0) {
+    		return sign * makeWithin(Math.abs(getPercentError(currentValue, goalValue)), minimumValue, maximumValue);
+    	} else {
+    		return 0.0;
     	}
     }
     

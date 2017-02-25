@@ -7,11 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team6584.robot.commands.ResetEncoders;
+import org.usfirst.frc.team6584.robot.commands.ResetGyro;
 import org.usfirst.frc.team6584.robot.commands.autonomous.AutoMove;
 import org.usfirst.frc.team6584.robot.commands.autonomous.AutoMoveToDistance;
 import org.usfirst.frc.team6584.robot.commands.autonomous.AutoSwerve;
 import org.usfirst.frc.team6584.robot.commands.autonomous.ChaChaLeft;
 import org.usfirst.frc.team6584.robot.commands.autonomous.ChaChaRight;
+import org.usfirst.frc.team6584.robot.commands.autonomous.GucciestAutoSwerve;
 import org.usfirst.frc.team6584.robot.commands.autonomous.PegAndStop;
 import org.usfirst.frc.team6584.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team6584.robot.subsystems.RollyPolly;
@@ -28,9 +31,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain drivetrain = new DriveTrain();
+	public static DriveTrain drivetrain;
 	public static OI oi;
-	public static final RollyPolly winch =new RollyPolly();
+	public static RollyPolly winch;
+	
+	// RollyPolly is the command for the spinning winch. Goes back and forth. That's literally it. There's literally a command for it if you look hard enough//
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -40,15 +45,22 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	drivetrain = new DriveTrain();
+    	winch =new RollyPolly();
 		oi = new OI();
+		
         chooser = new SendableChooser();
         createAutoChooser();
         
         SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("Reset Encoders", new ResetEncoders());
         SmartDashboard.putData(drivetrain);
+        SmartDashboard.putData("Reset Gyro", new ResetGyro());
+        
         
         CameraServer.getInstance().startAutomaticCapture(0);
         CameraServer.getInstance().startAutomaticCapture(1);
+        //we have 2 cameras. I guess you could call us...BICAMERAL(government joke)//
     }
     
 	
@@ -128,10 +140,11 @@ public class Robot extends IterativeRobot {
     public void createAutoChooser() {
     	chooser.addDefault("Do Nothing", new AutoMove(0.0, 0.0));
         chooser.addObject("Move 2 Peg", new AutoMoveToDistance(1.0, 108.0));
-        chooser.addObject("2016memes", new AutoSwerve(1.0,90.0));
+        chooser.addObject("2016memes", new AutoSwerve(0.5, 40.0));
         chooser.addObject("Move 2 Base", new AutoMoveToDistance(1.0,117.6));
         chooser.addObject("ChaChaLeft", new ChaChaLeft());
         chooser.addObject("ChaChaRight", new ChaChaRight());
         chooser.addObject("Peg and Stop", new PegAndStop());
+        // smartdashboard has a chooser thingy so you can choose which commands you want for autonomous//
     }
 }

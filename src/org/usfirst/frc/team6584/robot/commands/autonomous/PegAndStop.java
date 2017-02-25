@@ -1,4 +1,10 @@
+
+
+
+
 package org.usfirst.frc.team6584.robot.commands.autonomous;
+
+import org.usfirst.frc.team6584.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -8,7 +14,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class PegAndStop extends CommandGroup {
 
     public PegAndStop() {
-    	addSequential(new AutoMoveToDistance(1.0,108.0));
+    	addSequential(new AutoMoveToDistance(0.6,78.0));
+    }
+    	
+    	
+    	
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -27,4 +37,4 @@ public class PegAndStop extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     }
-}
+

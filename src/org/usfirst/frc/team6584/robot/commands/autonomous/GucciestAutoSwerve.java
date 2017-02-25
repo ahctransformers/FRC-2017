@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6584.robot.commands.autonomous;
 
+import org.team708.util.Math708;
 import org.usfirst.frc.team6584.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,15 +8,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoSwerve extends Command {
+public class GucciestAutoSwerve extends Command {
 	double swagTurnSpeed;
 	double swAngle;
 	
 	
-    public AutoSwerve(double swagTurnSpeed, double swAngle) {
+    public GucciestAutoSwerve(double swAngle) {
     	requires(Robot.drivetrain);
     	
-    	this.swagTurnSpeed = swagTurnSpeed;
+    	
 		this.swAngle = swAngle;
     }
 
@@ -26,7 +27,11 @@ public class AutoSwerve extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.moveArcade(0.0, swagTurnSpeed);
+    	this.swagTurnSpeed = Math708.getSignClippedPercentError(Robot.drivetrain.getGucciAngle(), swAngle, 0.35, 1.0);
+//    	this.swagTurnSpeed= Math708.makeWithin(((Robot.drivetrain.getGucciAngle()-swAngle) / swAngle), 1.0, 0.35);
+    	
+    	Robot.drivetrain.moveArcade(0.0, -swagTurnSpeed);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

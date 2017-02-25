@@ -19,8 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	Encoder encoder;
 	double distancePerPulse;
-	ADXRS450_Gyro gyro;
 	
+	ADXRS450_Gyro gyro;
 	
 	SpeedController motorLeft1;
 	SpeedController motorRight1;
@@ -30,13 +30,6 @@ public class DriveTrain extends Subsystem {
 	RobotDrive drivetrain;
 	
 	public DriveTrain() {
-		/* Uncomment this for the practice robot*/
-//		motorLeft1 = new VictorSP(RobotMap.motorLeft1);
-//		motorRight1= new VictorSP(RobotMap.motorRight1);
-//		motorLeft2 = new VictorSP(RobotMap.motorLeft2);
-//		motorRight2= new VictorSP(RobotMap.motorRight2);
-		
-		/* Uncomment this for the actual robot*/
 		motorLeft1 = new Spark(RobotMap.motorLeft1);
 		motorRight1= new Spark(RobotMap.motorRight1);
 		motorLeft2 = new Spark(RobotMap.motorLeft2);
@@ -45,16 +38,17 @@ public class DriveTrain extends Subsystem {
 		drivetrain= new RobotDrive(motorLeft1, motorLeft2, motorRight1, motorRight2);
 		
 		encoder=new Encoder(RobotMap.encoderA,RobotMap.encoderB);
+		distancePerPulse= (0.0527777778);
+		encoder.setDistancePerPulse(distancePerPulse);
+		
 		gyro=new ADXRS450_Gyro();
-		distancePerPulse= (12);
 	}
 	
 	public void SendToDashboard() {
 		SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
-		SmartDashboard.putNumber("Gyro angle", gyro.getAngle());
-		SmartDashboard.putNumber("Encoder distance", encoder.getDistance());
-		SmartDashboard.putNumber("Encoder rate", encoder.getRate());
-		
+		SmartDashboard.putNumber("Gyro angle",getGucciAngle());
+		SmartDashboard.putNumber("Encoder distance", getSwagDistance());
+		SmartDashboard.putNumber("Encoder rate", getWheelRate());
 	}
 	
     // Put methods for controlling this subsystem
