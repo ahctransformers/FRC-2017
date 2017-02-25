@@ -4,6 +4,7 @@ import org.team708.util.Gamepad;
 import org.usfirst.frc.team6584.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -21,7 +22,14 @@ public class JoystickDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putBoolean("Button", Robot.oi.DRIVER_GAMEPAD.getButton(3));
+    	if (Robot.oi.DRIVER_GAMEPAD.getButton(3)) {
+    		Robot.drivetrain.setMax(.4);
+    	} else {
+    		Robot.drivetrain.setMax(1);
+    	}
     	Robot.drivetrain.moveArcade(Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_Y), -Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_X));
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

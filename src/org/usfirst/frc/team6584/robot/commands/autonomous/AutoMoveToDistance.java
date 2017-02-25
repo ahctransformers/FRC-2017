@@ -12,11 +12,13 @@ import org.usfirst.frc.team6584.robot.Robot;
  * @params speedforward, speedrotation
  */
 public class AutoMoveToDistance extends Command {
+	private static final double kAngleSetpoint = 0.0;
+	private static final double kP = 0.05; // propotional turning constant
 	
 	double swagSpeed;
 	double swagTurn;
 	double swagDistance;
-	double tolerance = 1.5;
+	
 
     public AutoMoveToDistance(double swagSpeed,double swagDistance) {
         // Use requires() here to declare subsystem dependencies
@@ -36,14 +38,10 @@ public class AutoMoveToDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if (Robot.drivetrain.getGucciAngle()>tolerance)
-    		swagTurn=0.5;
-    	else if (Robot.drivetrain.getGucciAngle()<-tolerance)
-    		swagTurn=-0.5;
-    	else 
-    		swagTurn=0.0;
     	
-    	Robot.drivetrain.moveArcade(swagSpeed, swagTurn);
+    	double turningValue = (kAngleSetpoint - Robot.drivetrain.getGucciAngle()) * kP;
+    
+    	Robot.drivetrain.moveArcade(swagSpeed, turningValue);
     	
     }
 

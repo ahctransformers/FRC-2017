@@ -38,6 +38,7 @@ public class DriveTrain extends Subsystem {
 		drivetrain= new RobotDrive(motorLeft1, motorLeft2, motorRight1, motorRight2);
 		
 		encoder=new Encoder(RobotMap.encoderA,RobotMap.encoderB);
+	    //encoder.setReverseDirection(true);
 		distancePerPulse= (0.0527777778);
 		encoder.setDistancePerPulse(distancePerPulse);
 		
@@ -61,6 +62,10 @@ public class DriveTrain extends Subsystem {
 	public void moveArcade(double throttle, double rotate) {
 		drivetrain.arcadeDrive(throttle, rotate);
 		
+	}
+	
+	public void setMax(double max) {
+		drivetrain.setMaxOutput(max);
 	}
 
 	public double getWheelRate() {
