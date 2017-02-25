@@ -19,6 +19,7 @@ public class AutoMoveToDistance extends Command {
 	double swagTurn;
 	double swagDistance;
 	
+	double turningValue;
 
     public AutoMoveToDistance(double swagSpeed,double swagDistance) {
         // Use requires() here to declare subsystem dependencies
@@ -37,17 +38,14 @@ public class AutoMoveToDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	
-    	double turningValue = (kAngleSetpoint - Robot.drivetrain.getGucciAngle()) * kP;
+    	turningValue = (kAngleSetpoint - Robot.drivetrain.getGucciAngle()) * kP;
     
     	Robot.drivetrain.moveArcade(swagSpeed, turningValue);
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.drivetrain.getSwagDistance() >= swagDistance;
+    	return Math.abs(Robot.drivetrain.getSwagDistance()) >= Math.abs(swagDistance);
     	
     }
 

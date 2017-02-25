@@ -140,11 +140,9 @@ public class Robot extends IterativeRobot {
     
     public void createAutoChooser() {
     	chooser.addDefault("Do Nothing", new AutoMove(0.0, 0.0));
-       // chooser.addObject("Move 2 Peg", new AutoMoveToDistance(1.0, 108.0));
         chooser.addObject("2016memes", new AutoSwerve(0.5, 40.0));
-//        chooser.addObject("Move 2 Base", new AutoMoveToDistance(1.0,117.6));
-//        chooser.addObject("ChaChaLeft", new ChaChaLeft());
-//        chooser.addObject("ChaChaRight", new ChaChaRight());
+        chooser.addObject("ChaChaLeft", new ChaChaLeft());
+        chooser.addObject("ChaChaRight", new ChaChaRight());
         chooser.addObject("CenterStation", new CenterStation());
         chooser.addObject("RLbaseline", new RLbaseline());
         // smartdashboard has a chooser thingy so you can choose which commands you want for autonomous//

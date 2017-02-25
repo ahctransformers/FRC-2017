@@ -22,7 +22,6 @@ public class JoystickDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putBoolean("Button", Robot.oi.DRIVER_GAMEPAD.getButton(3));
     	if (Robot.oi.DRIVER_GAMEPAD.getButton(3)) {
     		Robot.drivetrain.setMax(.4);
     	} else {

@@ -34,8 +34,9 @@ public class DriveTrain extends Subsystem {
 		motorRight1= new Spark(RobotMap.motorRight1);
 		motorLeft2 = new Spark(RobotMap.motorLeft2);
 		motorRight2= new Spark(RobotMap.motorRight2);
-
+		
 		drivetrain= new RobotDrive(motorLeft1, motorLeft2, motorRight1, motorRight2);
+		drivetrain.setSafetyEnabled(false);
 		
 		encoder=new Encoder(RobotMap.encoderA,RobotMap.encoderB);
 	    //encoder.setReverseDirection(true);

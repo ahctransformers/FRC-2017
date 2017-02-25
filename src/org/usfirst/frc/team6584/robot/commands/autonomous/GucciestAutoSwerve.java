@@ -27,16 +27,15 @@ public class GucciestAutoSwerve extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	this.swagTurnSpeed = Math708.getSignClippedPercentError(Robot.drivetrain.getGucciAngle(), swAngle, 0.35, 1.0);
-//    	this.swagTurnSpeed= Math708.makeWithin(((Robot.drivetrain.getGucciAngle()-swAngle) / swAngle), 1.0, 0.35);
+    	this.swagTurnSpeed = Math708.getClippedPercentError(Robot.drivetrain.getGucciAngle(), swAngle, 0.35, 1.0);
     	
-    	Robot.drivetrain.moveArcade(0.0, -swagTurnSpeed);
+    	Robot.drivetrain.moveArcade(0.0, swagTurnSpeed);
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.drivetrain.getGucciAngle() >= swAngle;
+        return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(swAngle);
     }
 
     // Called once after isFinished returns true
