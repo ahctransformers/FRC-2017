@@ -38,6 +38,7 @@ public class DriveTrain extends Subsystem {
 		drivetrain= new RobotDrive(motorLeft1, motorLeft2, motorRight1, motorRight2);
 		
 		encoder=new Encoder(RobotMap.encoderA,RobotMap.encoderB);
+	    encoder.setReverseDirection(true);
 		distancePerPulse= (0.0527777778);
 		encoder.setDistancePerPulse(distancePerPulse);
 		

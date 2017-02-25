@@ -12,6 +12,8 @@ import org.usfirst.frc.team6584.robot.Robot;
  * @params speedforward, speedrotation
  */
 public class AutoMoveToDistance extends Command {
+	private static final double kAngleSetpoint = 0.0;
+	private static final double kP = 0.05; // propotional turning constant
 	
 	double swagSpeed;
 	double swagTurn;
@@ -42,8 +44,9 @@ public class AutoMoveToDistance extends Command {
     		swagTurn=-0.5;
     	else 
     		swagTurn=0.0;
-    	
-    	Robot.drivetrain.moveArcade(swagSpeed, swagTurn);
+    	double turningValue = (kAngleSetpoint - Robot.drivetrain.getGucciAngle()) * kP;
+    	SmartDashboard.putDouble("Turning rate", turningValue);
+    	Robot.drivetrain.moveArcade(swagSpeed, turningValue);
     	
     }
 
