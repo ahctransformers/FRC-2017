@@ -63,6 +63,10 @@ public class DriveTrain extends Subsystem {
 		drivetrain.arcadeDrive(throttle, rotate);
 		
 	}
+	
+	public void setMax(double max) {
+		drivetrain.setMaxOutput(max);
+	}
 
 	public double getWheelRate() {
 		return encoder.getRate();
