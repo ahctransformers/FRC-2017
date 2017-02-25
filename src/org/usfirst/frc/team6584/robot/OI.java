@@ -19,12 +19,10 @@ public class OI {
 	private static final int ROLLYPOLLY_ON_BUTTON = 6;
 	private static final int ROLLYPOLLY_STOP_BUTTON = 4;
 	private static final int STOP_MOVING_BUTTON = 2;
-	private static final int SLOWMO_BUTTON=7;
 	
 	private static final Button STOP_MOVING = new JoystickButton(DRIVER_GAMEPAD, STOP_MOVING_BUTTON);
 	private static final Button ROLLYPOLLY_ON = new JoystickButton(DRIVER_GAMEPAD, ROLLYPOLLY_ON_BUTTON);
 	private static final Button ROLLYPOLLY_STOP = new JoystickButton(DRIVER_GAMEPAD,ROLLYPOLLY_STOP_BUTTON);
-	private static final Button SLOWMO= new JoystickButton (DRIVER_GAMEPAD, SLOWMO_BUTTON);
 	
 	public OI() {
 		STOP_MOVING.whenPressed(new StopDrivetrain());

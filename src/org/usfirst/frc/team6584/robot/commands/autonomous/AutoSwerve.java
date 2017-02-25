@@ -31,7 +31,7 @@ public class AutoSwerve extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.drivetrain.getGucciAngle() >= swAngle;
+        return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(swAngle);
     }
 
     // Called once after isFinished returns true
