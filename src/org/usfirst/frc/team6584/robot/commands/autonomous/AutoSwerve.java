@@ -21,7 +21,7 @@ public class AutoSwerve extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetGyro();
+    //	Robot.drivetrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +31,8 @@ public class AutoSwerve extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(swAngle);
+    	return true; 
+     //   return Math.abs(Robot.drivetrain.getGucciAngle()) >= Math.abs(swAngle);
     }
 
     // Called once after isFinished returns true

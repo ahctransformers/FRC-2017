@@ -1,10 +1,13 @@
 package org.usfirst.frc.team6584.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.team708.util.Gamepad;
 import org.usfirst.frc.team6584.robot.commands.StopDrivetrain;
+import org.usfirst.frc.team6584.robot.commands.WheelsIn;
+import org.usfirst.frc.team6584.robot.commands.WheelsOut;
 import org.usfirst.frc.team6584.robot.commands.rollypolly.RollyUp;
 
 /**
@@ -14,19 +17,29 @@ import org.usfirst.frc.team6584.robot.commands.rollypolly.RollyUp;
 public class OI {
 	//this assigns the buttons lol//
 	public final static Gamepad DRIVER_GAMEPAD = new Gamepad(RobotMap.driverGamepad);
+	public static Gamepad operatorstick = new Gamepad (1);
+	// bUTTON aSSIGNMENTS 
 	
-	// bUTTON aSSIGNMENTS
-	private static final int ROLLYPOLLY_ON_BUTTON = 6;
+	public static int INTAKE_IN = Gamepad.button_L_Shoulder;
+	public static int INTAKE_OUT = Gamepad.button_R_Shoulder;
+	
+	public static Button intakeInButton = new JoystickButton(operatorstick, INTAKE_IN);
+	public static Button intakeOutButton = new JoystickButton(operatorstick, INTAKE_OUT);
+	
+	/*private static final int ROLLYPOLLY_ON_BUTTON = 6;
 	private static final int ROLLYPOLLY_STOP_BUTTON = 4;
 	private static final int STOP_MOVING_BUTTON = 2;
-	
-	private static final Button STOP_MOVING = new JoystickButton(DRIVER_GAMEPAD, STOP_MOVING_BUTTON);
+	*/
+	/*private static final Button STOP_MOVING = new JoystickButton(DRIVER_GAMEPAD, STOP_MOVING_BUTTON);
 	private static final Button ROLLYPOLLY_ON = new JoystickButton(DRIVER_GAMEPAD, ROLLYPOLLY_ON_BUTTON);
 	private static final Button ROLLYPOLLY_STOP = new JoystickButton(DRIVER_GAMEPAD,ROLLYPOLLY_STOP_BUTTON);
-	
+	*/
 	public OI() {
-		STOP_MOVING.whenPressed(new StopDrivetrain());
-		ROLLYPOLLY_ON.whenPressed(new RollyUp());
+		intakeInButton.whileHeld(new WheelsIn());
+		intakeOutButton.whileHeld(new WheelsOut());
+		
+		//STOP_MOVING.whenPressed(new StopDrivetrain());
+		//ROLLYPOLLY_ON.whenPressed(new RollyUp());
 		
 	}
 	

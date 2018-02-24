@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RLbaseline extends CommandGroup {
 
     public RLbaseline() {
-    	addSequential(new AutoMoveToDistance(0.6,144.0));
+    	addSequential(new AutoMoveToDistance(0.7,186.0));
     }
     	
     	

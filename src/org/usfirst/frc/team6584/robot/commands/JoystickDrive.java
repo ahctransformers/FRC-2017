@@ -27,8 +27,9 @@ public class JoystickDrive extends Command {
     	} else {
     		Robot.drivetrain.setMax(1);
     	}
-    	Robot.drivetrain.moveArcade(Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_Y), -Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_X));
     	
+    	//Robot.drivetrain.moveArcade(Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_Y),-Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_X));
+    	Robot.drivetrain.moveArcade(Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.leftStick_Y),-Robot.oi.DRIVER_GAMEPAD.getAxis(Gamepad.rightStick_X));
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -10,17 +10,28 @@ public class ChaChaLeft extends CommandGroup {
 
     public ChaChaLeft() {
     	
-    	addSequential(new AutoMoveToDistance(0.5,76.0));
-    	addSequential(new AutoSwerve(0.5,45.0));
-    	addSequential(new AutoMoveToDistance(0.5,42.0));
-    	addSequential(new WaitCommand(1.0));
-    	addSequential(new AutoMoveToDistance(-0.5,42.0));
-    	addSequential(new AutoSwerve(-0.5,-45.0));
-    	addSequential(new AutoMoveToDistance(0.5,42.0));
+//    	addSequential(new AutoMoveToDistance(0.5,65.27));
+//    	addSequential(new GucciestAutoSwerve(57.0));
+//    	addSequential(new AutoMoveToDistance(0.5,62.0));
+//    	addSequential(new WaitCommand(1.0));
+//    	addSequential(new AutoMoveToDistance(-0.5,62.0));
+//    	addSequential(new GucciestAutoSwerve(-57.0));
+//    	addSequential(new AutoMoveToDistance(0.5,42.0));
+    	
+    	
+    	
+    	addSequential(new AutoMoveToDistance(0.6,65.27));
+    	addSequential(new AutoSwerve(0.6,-58.0));
+    	addSequential(new AutoMoveToDistance(0.6,65.0));
+    	addSequential(new WaitCommand(2.0));
+    	addSequential(new AutoMoveToDistance(-0.7,65.0));
+    	addSequential(new AutoSwerve(-0.6,60.5));
+    	addSequential(new AutoMoveToDistance(0.7,130.0));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
+        //  
+    	
         // these will run in order.
 
         // To run multiple commands at the same time,

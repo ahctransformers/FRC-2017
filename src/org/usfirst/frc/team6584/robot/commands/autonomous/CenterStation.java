@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CenterStation extends CommandGroup {
 
     public CenterStation() {
-    	addSequential(new AutoMoveToDistance(0.6,78.0));
+    	addSequential(new AutoMoveToDistance(0.6,75.0));
     }
     	
     	

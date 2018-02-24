@@ -14,10 +14,13 @@ import org.usfirst.frc.team6584.robot.commands.autonomous.AutoMoveToDistance;
 import org.usfirst.frc.team6584.robot.commands.autonomous.AutoSwerve;
 import org.usfirst.frc.team6584.robot.commands.autonomous.ChaChaLeft;
 import org.usfirst.frc.team6584.robot.commands.autonomous.ChaChaRight;
+import org.usfirst.frc.team6584.robot.commands.autonomous.GucciestAutoMoveToDistance;
 import org.usfirst.frc.team6584.robot.commands.autonomous.GucciestAutoSwerve;
+import org.usfirst.frc.team6584.robot.commands.autonomous.GucciestAutoSwerveCG;
 import org.usfirst.frc.team6584.robot.commands.autonomous.RLbaseline;
 import org.usfirst.frc.team6584.robot.commands.autonomous.CenterStation;
 import org.usfirst.frc.team6584.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team6584.robot.subsystems.IntakePacman;
 import org.usfirst.frc.team6584.robot.subsystems.RollyPolly;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -35,6 +38,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static RollyPolly winch;
+	public static IntakePacman intakepacman;
 	
 	// RollyPolly is the command for the spinning winch. Goes back and forth. That's literally it. There's literally a command for it if you look hard enough//
 
@@ -141,10 +145,13 @@ public class Robot extends IterativeRobot {
     public void createAutoChooser() {
     	chooser.addDefault("Do Nothing", new AutoMove(0.0, 0.0));
         chooser.addObject("2016memes", new AutoSwerve(0.5, 40.0));
-        chooser.addObject("ChaChaLeft", new ChaChaLeft());
-        chooser.addObject("ChaChaRight", new ChaChaRight());
+        chooser.addObject("ChaChaRight", new ChaChaLeft());
+        chooser.addObject("ChaChaLeft", new ChaChaRight());
         chooser.addObject("CenterStation", new CenterStation());
         chooser.addObject("RLbaseline", new RLbaseline());
+        chooser.addObject("GucciestAutoTest", new GucciestAutoMoveToDistance(120.0));
         // smartdashboard has a chooser thingy so you can choose which commands you want for autonomous//
+   //chacha left and right are acting in reverse so thats why the names are different. 
+        //change them later
     }
 }

@@ -16,8 +16,12 @@ public class RobotMap {
     public static final int motorRight1 = 2;
 	public static final int motorLeft2 = 1;
 	public static final int motorRight2 = 3;
-	public static final int motor1=4;
+	public static final int motor1=6;
 	//motor1 is for the winch system mentioned in the RollyPolly command//
+	
+	public static int leftIntakePacman = 4;
+	public static int rightIntakePacman = 5;
+	
 	
 	// DIO Ports
 	public static final int encoderA=0;

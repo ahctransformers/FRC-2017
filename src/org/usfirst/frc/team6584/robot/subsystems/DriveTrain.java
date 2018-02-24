@@ -20,7 +20,7 @@ public class DriveTrain extends Subsystem {
 	Encoder encoder;
 	double distancePerPulse;
 	
-	ADXRS450_Gyro gyro;
+	//ADXRS450_Gyro gyro;
 	
 	SpeedController motorLeft1;
 	SpeedController motorRight1;
@@ -28,6 +28,8 @@ public class DriveTrain extends Subsystem {
 	SpeedController motorRight2;
 	
 	RobotDrive drivetrain;
+	
+	double scalingFactor = 1.00;
 	
 	public DriveTrain() {
 		motorLeft1 = new Spark(RobotMap.motorLeft1);
@@ -43,12 +45,12 @@ public class DriveTrain extends Subsystem {
 		distancePerPulse= (0.0527777778);
 		encoder.setDistancePerPulse(distancePerPulse);
 		
-		gyro=new ADXRS450_Gyro();
+		//gyro=new ADXRS450_Gyro();
 	}
 	
 	public void SendToDashboard() {
-		SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
-		SmartDashboard.putNumber("Gyro angle",getGucciAngle());
+	//	SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
+	//	SmartDashboard.putNumber("Gyro angle",getGucciAngle());
 		SmartDashboard.putNumber("Encoder distance", getSwagDistance());
 		SmartDashboard.putNumber("Encoder rate", getWheelRate());
 	}
@@ -57,11 +59,11 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 	
 	public void moveTank(double motorLeft,double motorRight) {
-		drivetrain.tankDrive(motorLeft, motorRight);
+		drivetrain.tankDrive(motorLeft * scalingFactor, motorRight * scalingFactor);
 	}
 	
 	public void moveArcade(double throttle, double rotate) {
-		drivetrain.arcadeDrive(throttle, rotate);
+		drivetrain.arcadeDrive(throttle * scalingFactor, rotate * scalingFactor);
 		
 	}
 	
@@ -81,13 +83,13 @@ public class DriveTrain extends Subsystem {
 		encoder.reset();
 	}
 	
-	public double getGucciAngle (){
-		return gyro.getAngle();
-	}
+	//public double getGucciAngle (){
+		//return gyro.getAngle();
+	//}
 	
-	public void resetGyro (){
-		gyro.reset();
-	}
+	//public void resetGyro (){
+	//	gyro.reset();
+	//}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

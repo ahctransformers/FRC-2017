@@ -7,34 +7,38 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ResetGyro extends Command {
+public class WheelsIn extends Command {
 
-    public ResetGyro() {
+	public WheelsIn() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.intakepacman);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    //	Robot.drivetrain.resetGyro();
+    	Robot.intakepacman.wheelsMove(1);
+    	Robot.drivetrain.resetEncoder();
+    	//Robot.drivetrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    //	Robot.drivetrain.resetGyro();
+    	Robot.intakepacman.wheelsMove(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intakepacman.wheelsStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
